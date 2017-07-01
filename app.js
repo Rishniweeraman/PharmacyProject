@@ -18,7 +18,7 @@ app.use(function (req,res,next) {
 //app.use();
 app.use(bodyparser.json());
 
-//Genre=require('./models/genre');
+
 Drug=require('./models/drug');
 Supplier=require('./models/supplier');
 Email=require('./models/email');
@@ -32,59 +32,21 @@ app.get('/',function (req,res) {
     res.send('please use /api/drugs or /api/genres');
 });
 
-/*
-app.get('/api/genres',function (req,res) {
-    Genre.getGenres(function (err,genres) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(genres);
-    });
-});
-
-app.post('/api/genres',function (req,res) {
-    var genre=req.body;
-    Genre.addGenre(genre,function (err,genre) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(genre);
-    });
-});
-
-
-app.put('/api/genres/:_id',function (req,res) {
-    var id=req.params._id;
-    var genre=req.body;
-    Genre.updateGenre(id,genre,{},function (err,genre) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(genre);
-    });
-});
-
-
-app.delete('/api/genres/:_id',function (req,res) {
-    var id=req.params._id;
-    Genre.deleteGenre(id,function (err,genre) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(genre);
-    });
-});
-
-*/
-
 //drug
-
+//get drug by category
 app.get('/api/drug/:category',function (req,res) {
     Drug.getDrugsByCategory(req.params.category,function (err,drugs) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(drugs);
+    });
+});
+
+//get drug by name
+app.get('/api/d/:name',function (req,res) {
+    Drug.getDrugsByName(req.params.name,function (err,drugs) {
         if(err)
         {
             throw err;

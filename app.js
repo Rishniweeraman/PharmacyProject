@@ -82,8 +82,9 @@ app.delete('/api/genres/:_id',function (req,res) {
 */
 
 //drug
-app.get('/api/drugs/:category',function (req,res) {
-    Drug.getDrugNameByCategory(req.params.category,function (err,drugs) {
+
+app.get('/api/drug/:category',function (req,res) {
+    Drug.getDrugsByCategory(req.params.category,function (err,drugs) {
         if(err)
         {
             throw err;
@@ -112,15 +113,6 @@ app.get('/api/drugs/:_id',function (req,res) {
     });
 });
 
-app.get('/api/drugs/:category',function (req,res) {
-    Drug.getDrugsByCategory(req.params.category,function (err,drug) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(drug);
-    });
-});
 
 
 app.post('/api/drugs',function (req,res) {
@@ -240,8 +232,8 @@ app.get('/api/emails',function (req,res) {
         res.json(emails);
     });
 });
-
 /*
+
 var fs=require('fs');
 //var config=JSON.parse(fs.readFileSync("config.json"));
 
@@ -270,11 +262,11 @@ transporter.sendMail(HelperOptions,(error,info)=>{
     console.log("The message was sent!");
     console.log(info);
 
-    /*
+
     app.post('/api/emails',function (req,res) {
 
         //var email=req.body;
-        Email.sendMail(HelperOptions,function (err,email) {
+        transporter.sendMail(HelperOptions,function (err,email) {
             if(err)
             {
                 throw err;
@@ -285,9 +277,18 @@ transporter.sendMail(HelperOptions,(error,info)=>{
 
 
 });
- */
+     */
 
-
+app.post('/api/emails',function (req,res) {
+    var email=req.body;
+    Email.sendMail(email,function (err,email) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(email);
+    });
+});
 
 app.listen(3000);
 

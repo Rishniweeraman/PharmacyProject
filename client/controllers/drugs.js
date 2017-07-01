@@ -77,18 +77,34 @@ myApp.controller('DrugsController',['$scope','$http','$location','$routeParams',
 
     }
 
-    $scope.getDrugsByCategory=function() {
-        var category=$routeParams.category;
+    $scope.getDrugsByCategory=function(category) {
+        //var category=$routeParams.category;
 
         $http.get('api/drug/'+category).then(successCallback,errorCallback);
         function successCallback(response)
         {
-            $scope.drug=response.data;
+            $scope.drugDetails=response.data;
             console.log(response.data);
         }
         function errorCallback(error)
         {
             console.log('err from getDrugNameByCategory')
+        }
+
+    }
+
+    $scope.getDrugsByName=function(name) {
+        console.log(name);
+
+        $http.get('api/d/'+name).then(successCallback,errorCallback);
+        function successCallback(response)
+        {
+            $scope.drugDetailss=response.data;
+            console.log(response.data);
+        }
+        function errorCallback(error)
+        {
+            console.log('err from getDrugsByName')
         }
 
     }

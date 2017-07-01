@@ -1,4 +1,4 @@
-﻿var express=require('express');
+var express=require('express');
 var bodyparser=require('body-parser');
 var mongoose=require('mongoose');
 
@@ -20,7 +20,7 @@ app.use(function (req,res,next) {
 //app.use();
 app.use(bodyparser.json());
 
-//Genre=require('./models/genre');
+
 Drug=require('./models/drug');
 Supplier=require('./models/supplier');
 Email=require('./models/email');
@@ -36,59 +36,10 @@ app.get('/',function (req,res) {
     res.send('please use /api/drugs or /api/genres');
 });
 
-/*
-app.get('/api/genres',function (req,res) {
-    Genre.getGenres(function (err,genres) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(genres);
-    });
-});
-
-app.post('/api/genres',function (req,res) {
-    var genre=req.body;
-    Genre.addGenre(genre,function (err,genre) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(genre);
-    });
-});
-
-
-app.put('/api/genres/:_id',function (req,res) {
-    var id=req.params._id;
-    var genre=req.body;
-    Genre.updateGenre(id,genre,{},function (err,genre) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(genre);
-    });
-});
-
-
-app.delete('/api/genres/:_id',function (req,res) {
-    var id=req.params._id;
-    Genre.deleteGenre(id,function (err,genre) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(genre);
-    });
-});
-
-*/
-
 //drug
-/**
-app.get('/api/drugs/:category',function (req,res) {
-    Drug.getDrugNameByCategory(req.params.category,function (err,drugs) {
+//get drug by category
+app.get('/api/drug/:category',function (req,res) {
+    Drug.getDrugsByCategory(req.params.category,function (err,drugs) {
         if(err)
         {
             throw err;
@@ -96,7 +47,30 @@ app.get('/api/drugs/:category',function (req,res) {
         res.json(drugs);
     });
 });
-*/
+
+//drug
+//get drug by category
+app.get('/api/drug/:category',function (req,res) {
+    Drug.getDrugsByCategory(req.params.category,function (err,drugs) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(drugs);
+    });
+});
+
+//get drug by name
+app.get('/api/d/:name',function (req,res) {
+    Drug.getDrugsByName(req.params.name,function (err,drugs) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(drugs);
+    });
+});
+
 app.get('/api/drugs',function (req,res) {
     Drug.getDrugs(function (err,drugs) {
         if(err)
@@ -116,18 +90,9 @@ app.get('/api/drugs/:_id',function (req,res) {
         res.json(drug);
     });
 });
-/*
-app.get('/api/drugs/:category',function (req,res) {
-    Drug.getDrugsByCategory(req.params.category,function (err,drug) {
-        if(err)
-        {
-            throw err;
-        }
-        res.json(drug);
-    });
-});
 
-*/
+
+
 app.post('/api/drugs',function (req,res) {
     var drug=req.body;
     Drug.addDrug(drug,function (err,drug) {
@@ -245,9 +210,8 @@ app.get('/api/emails',function (req,res) {
         res.json(emails);
     });
 });
-
-
 /*
+
 var fs=require('fs');
 //var config=JSON.parse(fs.readFileSync("config.json"));
 
@@ -276,11 +240,11 @@ transporter.sendMail(HelperOptions,(error,info)=>{
     console.log("The message was sent!");
     console.log(info);
 
-    /*
+
     app.post('/api/emails',function (req,res) {
 
         //var email=req.body;
-        Email.sendMail(HelperOptions,function (err,email) {
+        transporter.sendMail(HelperOptions,function (err,email) {
             if(err)
             {
                 throw err;
@@ -291,7 +255,18 @@ transporter.sendMail(HelperOptions,(error,info)=>{
 
 
 });
- */
+     */
+
+app.post('/api/emails',function (req,res) {
+    var email=req.body;
+    Email.sendMail(email,function (err,email) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(email);
+    });
+});
 
 //add Drugs codes
 app.get('/api/drug/:category',function (req,res) {

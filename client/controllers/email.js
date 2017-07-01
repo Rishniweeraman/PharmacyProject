@@ -4,7 +4,7 @@ myApp.controller('EmailsController',['$scope','$http','$location','$routeParams'
 
     $scope.getEmails=function() {
 
-        $http.get('api/email').then(successCallback,errorCallback);
+        $http.get('api/emails').then(successCallback,errorCallback);
         function successCallback(response)
         {
             $scope.emails=response.data;

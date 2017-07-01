@@ -82,6 +82,7 @@ app.delete('/api/genres/:_id',function (req,res) {
 */
 
 //drug
+/**
 app.get('/api/drugs/:category',function (req,res) {
     Drug.getDrugNameByCategory(req.params.category,function (err,drugs) {
         if(err)
@@ -91,7 +92,7 @@ app.get('/api/drugs/:category',function (req,res) {
         res.json(drugs);
     });
 });
-
+*/
 app.get('/api/drugs',function (req,res) {
     Drug.getDrugs(function (err,drugs) {
         if(err)
@@ -111,7 +112,7 @@ app.get('/api/drugs/:_id',function (req,res) {
         res.json(drug);
     });
 });
-
+/*
 app.get('/api/drugs/:category',function (req,res) {
     Drug.getDrugsByCategory(req.params.category,function (err,drug) {
         if(err)
@@ -122,7 +123,7 @@ app.get('/api/drugs/:category',function (req,res) {
     });
 });
 
-
+*/
 app.post('/api/drugs',function (req,res) {
     var drug=req.body;
     Drug.addDrug(drug,function (err,drug) {
@@ -287,6 +288,17 @@ transporter.sendMail(HelperOptions,(error,info)=>{
 });
  */
 
+app.post('/api/addDrugs',function (req,res) {
+
+    var drug=req.body;
+    Drug.addDrug(drug,function (err,drug) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(drug);
+    });
+});
 
 
 app.listen(3000);

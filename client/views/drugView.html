@@ -1,0 +1,35 @@
+<a href="#!/drugs/druginfo">Go Back</a>
+<div class="panel panel-default" ng-init="getDrugById()">
+    <div class="panel-heading" style="font-family: Calibri;font-size: 25px">Values to date</div>
+    <div class="panel-body" style="overflow-x:auto;overflow-y:auto">
+        <table class="table table-striped" style="width:100%;white-space:nowrap;border: 1px solid #dddddd">
+            <thead>
+                <tr>
+                    <th>Drug Details</th>
+                    <th>Values to the date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Batch No</td>
+                    <td><input type="text" style="width: 250px" ng-model="drug.batchNo" readonly></td>
+                </tr>
+
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" style="width: 250px" ng-model="drug.name" readonly></td>
+                </tr>
+
+                <tr>
+                    <td>Quantity</td>
+                    <td><input type="text" style="width: 250px" ng-model="drug.quantity" readonly></td>
+
+                </tr>
+            </tbody>
+
+        </table>
+
+
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="panel panel-default" ng-init="getDrugs()">
+    <div class="panel-heading" style="font-family: Calibri;font-size: 25px">Pharmacy Stock</div>
+    <div class="panel-heading" style="font-family: Calibri;font-size: 20px">Low Stocks as on <span>{{CurrentDate | date:'dd/MM/yyyy'}}</span></div>
+    <div class="panel-body" style="overflow-x:auto;overflow-y:auto">
+        <label style="color: red">Less than Danger level</label>&nbsp<label style="color: orange">  Less than Re order level</label>
+        <table class="table table-striped" style="width:100%;white-space:nowrap;border: 1px solid #dddddd">
+            <thead style="border: 1px solid #dddddd">
+            <tr>
+                <th style="border: 1px solid #dddddd">Drug Name</th>
+                <th style="border: 1px solid #dddddd">Unit Type</th>
+                <th style="border: 1px solid #dddddd">Drug Category</th>
+                <th style="border: 1px solid #dddddd">Drug Price</th>
+                <th style="border: 1px solid #dddddd">Drug Quantity</th>
+                <th style="border: 1px solid #dddddd">Send Mail</th>
+            </tr>s
+            </thead>
+            <tbody style="border: 1px solid #dddddd">
+            <tr ng-repeat="drug in drugs">
+                <td style="border: 1px solid #dddddd">{{drug.name}}</td>
+                <td style="border: 1px solid #dddddd">{{drug.unitType}}</td>
+                <td style="border: 1px solid #dddddd">{{drug.category}}</td>
+                <td style="border: 1px solid #dddddd">{{drug.price}}</td>
+                <td style="border: 1px solid #dddddd">{{drug.quantity}}</td>
+                <td style="border: 1px solid #dddddd"><a class="btn btn-primary" href="#!/drugs/details/{{drug._id}}">Place Order</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" >View as PDF</button>
+    </div>
+</div>
+
+

@@ -1,0 +1,49 @@
+<a href="#!/drugs/druginfo">Go Back</a>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Edit Drug</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <form ng-init="getDrugById()" ng-submit="updateDrug()">
+                <table class="table table-striped" style="width:100%;white-space:nowrap">
+
+                    <thead>
+                    <tr>
+                        <th>Drug Details</th>
+                        <th>Values to the date</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>Quantity</td>
+                        <td><input type="text" style="width: 250px" ng-model="drug.quantity"></td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Batch Status</td>
+                        <td><input type="text" style="width: 250px" ng-model="drug.batchStatus"></td>
+                    </tr>
+
+                   <!-- <tr>
+                        <td>Change Batch Status</td>
+                        <td>Enable <input type="text" style="width: 200px" ng-model="drug.title"><br>
+                            Disable<input type="text" style="width: 200px">
+                        </td>
+                    </tr>
+-->
+                    <tr>
+                        <td><button type="submit" class="btn btn-default">Update</button></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </form>
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<div class="panel panel-default" ng-init="getDrugById()">
+    <div class="panel-heading" style="font-family: Calibri;font-size: 25px">Drug Request Mail Sender</div>
+
+    <div class="panel-body" style="overflow-x:auto;overflow-y:auto">
+        {{drug.name}}
+        <form ng-submit="sendMail()">
+            <table class="table table-striped" style="width:100%;white-space:nowrap">
+
+                <tbody>
+                <tr>
+                    <td>From:</td>
+                    <td><input type="text" style="width: 900px" ng-model="from" ></td>
+                </tr>
+
+                <tr>
+                    <td>To:</td>
+                    <td><input type="text" style="width: 900px" ng-model="to" ></td>
+                </tr>
+
+                <tr>
+                    <td>Subject:</td>
+                    <td><input type="text" style="width: 900px" ng-model="subject" readonly></td>
+                </tr>
+
+                <tr>
+                    <td>Content:</td>
+                    <td><textarea style="width: 900px" rows="10" cols="20" ng-model="text"></textarea></td>
+                </tr>
+
+                </tbody>
+
+                <!--<tbody>
+                <tr>
+                    <td>From:</td>
+                    <td><input type="text" style="width: 900px" value="digitalPulzPharmacy@gmail.com" ng-model="from" ></td>
+                </tr>
+
+                <tr>
+                    <td>To:</td>
+                    <td><input type="text" style="width: 900px" ng-model="to" ></td>
+                </tr>
+
+                <tr>
+                    <td>Subject:</td>
+                    <td><input type="text" style="width: 900px" value="Drug Reorder request for {{drug.name}}" ng-model="subject"  readonly></td>
+                </tr>
+
+                <tr>
+                    <td>Content:</td>
+                    <td><textarea style="width: 900px" rows="10" cols="20" ng-model="text">
+                    Dear Officer,
+                    The quantites of the below drugs are low
+                    Name:{{drug.name}}
+                    Category:{{drug.category}}
+                    Price(Rs):{{drug.price}}
+                    Quantity in hand:{{drug.quantity}}
+                    Please be kind enough to send us new stocks
+
+                    Best Regards,
+                    Chief Pharmacist
+                    </textarea></td>
+                </tr>
+
+                </tbody> -->
+            </table>
+            <!--<button type="button" class="btn btn-primary" href="#!/emails" ng-click="addEmail()">Send</button>-->
+            <button type="submit" class="btn btn-default">Send</button>
+        </form>
+
+
+    </div>
+
+    <!--
+<div class="panel panel-default" ng-init="getEmails()">
+    <div class="panel-heading" style="font-family: Calibri;font-size: 25px">Mail History for Selected Drugs</div>
+    <div class="panel-body" style="overflow-x:auto;overflow-y:auto">
+        <table class="table table-striped" style="width:100%;white-space:nowrap">
+            <thead>
+            <tr>
+                <th>Content</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="email in emails">
+                    <td style="border: 1px solid #dddddd">{{email.text}}</td>
+                    <td style="border: 1px solid #dddddd">{{email.date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+    -->
+</div>

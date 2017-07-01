@@ -1,0 +1,63 @@
+<div class="panel panel-default" >
+    <div class="panel-heading">
+        <h3>Drug Dispense</h3>
+        <input type="text"ng-model="searchValue">
+        <button ng-click="getPrescriptionsByPatientId(searchValue)">Search</button>
+    </div>
+    <div class="panel-body" style="overflow-x:auto;overflow-y:auto">
+
+        <div class="form-group" ng-controller="PrescriptionController">
+
+            <table class="table table-striped" style="width:100%;white-space:nowrap;border: 1px solid #dddddd">
+                <thead style="border: 1px solid #dddddd">
+                <tr>
+                    <th style="border: 1px solid #dddddd">Patient ID</th>
+                    <th style="border: 1px solid #dddddd">Create Date</th>
+                    <th style="border: 1px solid #dddddd">Prescription Date</th>
+                    <th style="border: 1px solid #dddddd">Action</th>
+                </tr>
+                </thead>
+                <tbody style="border: 1px solid #dddddd">
+                <tr  ng-repeat="prescription in prescriptions">
+                    <td style="border: 1px solid #dddddd">{{prescription.patientHIN}}</td>
+                    <td style="border: 1px solid #dddddd">{{prescription.create_date}}</td>
+                    <td style="border: 1px solid #dddddd">{{prescription.pres_date}}</td>
+                    <td style="border: 1px solid #dddddd"><a href="#!/prescriptions/details/{{prescription.patientHIN}}" class="btn btn-primary"> View & Dispense</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="panel panel-default" ng-init="getDrugs()">
+    <div class="panel-heading">
+        <h3>Drug stock</h3>
+    </div>
+    <div class="panel-body" style="overflow-x:auto;overflow-y:auto">
+
+        <!-- Drug Stock Table-->
+
+        <table class="table table-striped" style="width:100%;white-space:nowrap;border: 1px solid #dddddd" >
+            <thead style="border: 1px solid #dddddd">
+            <tr>
+               <!-- <th style="border: 1px solid #dddddd">Drug ID</th>-->
+                <th style="border: 1px solid #dddddd">Drug Name</th>
+                <th style="border: 1px solid #dddddd">Quantity</th>
+            </tr>
+            </thead>
+            <tbody style="border: 1px solid #dddddd">
+            <tr  ng-repeat="drug in drugs">
+                <!--<td style="border: 1px solid #dddddd">{{drug._id}}</td>-->
+                <td style="border: 1px solid #dddddd">{{drug.name}}</td>
+                <td style="border: 1px solid #dddddd">{{drug.quantity}}</td>
+                <!--<td style="border: 1px solid #dddddd"><button>View & Dispense</button></td>-->
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

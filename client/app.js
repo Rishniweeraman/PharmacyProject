@@ -40,6 +40,10 @@ myApp.config(function ($routeProvider) {
         controller:'ReportsController',
         templateUrl:'views/report.html'
     })
+        .when('/addDrug',{
+            controller:'addDrugsController',
+            templateUrl:'views/addDrug.html'
+        })
 	.otherwise({
 		redirectTo:'/'
 	})

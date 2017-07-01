@@ -1,10 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="panel panel-default">
+    <div class="panel-heading" style="width: auto" ng-app="myApp">
+        <a data-toggle="collapse" href="#collapse1">
+            Add Drugs Using Files
+        </a>
+    </div>
 
-</body>
-</html>
+
+        <div class="panel-body" style="height:100px; width:75%">
+            <div class="form-group">
+                <form id="uploadForm" enctype="multipart/form-data" action="/api/file" method="post">
+                    <label for="usr">Choose File</label>
+                        <input type="file" class="form-control" id="usr">
+                        <button type="button" value="upload">Upload</button>
+                </form>
+            </div>
+        </div>
+
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading" >
+        Add drugs Manually
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-xs-10">
+                <div class="form-group" action="/insert" method="POST">
+                    <label for="sel1"><small>Drug Category</small></label>
+                    <select class="form-control input-sm" id="sel1">
+                        <option>Narcotics</option>
+                        <option>Drugs used in the treatment of injections</option>
+                        <option>Drugs used in the treatment of Cardiovascular system</option>
+                        <option>Drugs acting on the central nervous system</option>
+                    </select>
+                </div>
+
+                <label for="usr1"><small>Drug Name</small></label>
+                <input type="text" class="form-control" id="usr1">
+
+                <div class="form-group">
+                    <label for="sel2"><small>Drug Type</small></label>
+                    <select class="form-control input-sm" id="sel2">
+                        <option>AMP</option>
+                        <option>Tablets</option>
+                        <option>Capsules</option>
+                        <option>spray</option>
+                    </select>
+                </div>
+
+                <label for="usr2"><small>Drug Price</small></label>
+                <input type="text" class="form-control" id="usr2">
+
+                <label for="usr3"><small>Remarks</small></label>
+                <input type="text" class="form-control" id="usr3">
+
+                <label for="usr4"><small>Danger Level</small></label>
+                <input type="text" class="form-control" id="usr4">
+
+                <label for="usr5"><small>Reorder Level</small></label>
+                <input type="text" class="form-control" id="usr5">
+
+                <label for="usr6"><small>Dosage</small></label>
+                <input type="text" class="form-control" id="usr6">
+
+                <label for="usr7"><small>Frequency</small></label>
+                <input type="text" class="form-control" id="usr7">
+
+                <br>
+                <button type="button" class="btn btn-primary">Add Drug</button>
+            </div>
+        </div>
+    </div>
+</div>
+

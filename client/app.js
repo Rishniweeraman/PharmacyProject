@@ -41,6 +41,26 @@ myApp.config(function ($routeProvider) {
         controller:'ReportsController',
         templateUrl:'views/report.html'
     })
+
+        /*mypart */
+        .when('/prescriptions',{
+            controller:'PrescriptionController',
+            templateUrl:'views/prescription.html'
+        })
+        .when('/users',{
+            controller:'UserController',
+            templateUrl:'views/register.html'
+        })
+
+        .when('/prescriptions/details/:id',{
+            controller:'PrescriptionController',
+            templateUrl:'views/prescriptiondetails.html'
+        })
+        .when('/login',{
+            controller:'UserController',
+            templateUrl:'views/login.html'
+        })
+
         .when('/addDrug',{
             controller:'DrugsController',
             templateUrl:'views/addDrug.html'
@@ -49,6 +69,7 @@ myApp.config(function ($routeProvider) {
             controller:'updateDrugsController',
             templateUrl:'views/updateDrugs.html'
         })
+
 
 	.otherwise({
 		redirectTo:'/'

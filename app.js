@@ -8,6 +8,8 @@ var app=express();
 //connecting client
 app.use(express.static(__dirname+'/client'));
 
+
+
 /*
 app.use(function (req,res,next) {
     res.header("Access-Control-Allow-Origin","*");
@@ -22,7 +24,9 @@ app.use(bodyparser.json());
 Drug=require('./models/drug');
 Supplier=require('./models/supplier');
 Email=require('./models/email');
-
+Prescription=require('./models/prescription');
+User=require('./models/user');
+Prescriptiondetail=require('./models/prescriptiondetail');
 //connect to mongoose
 mongoose.connect('mongodb://code_girls:code_girls123@ds141242.mlab.com:41242/pharmacy');
 
@@ -242,6 +246,7 @@ app.get('/api/emails',function (req,res) {
     });
 });
 
+
 /*
 var fs=require('fs');
 //var config=JSON.parse(fs.readFileSync("config.json"));
@@ -322,7 +327,108 @@ app.post('/api/addDrugs',function (req,res) {
     });
 });
 
+//get all prescriptions
+app.get('/api/prescriptions',function (req,res) {
+    Prescription.getPrescriptions(function (err,prescriptions) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescriptions);
+    })
+});
 
-app.listen(3000);
+//get a prescription
+app.get('/api/prescriptions/:_id',function (req,res) {
+    Prescription.getPrescriptionsById(req.params._id,function (err,prescription) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescription);
+    })
+});
+
+
+app.post('/api/prescriptions',function (req,res) {
+    var prescription=req.body;
+    Prescription.addPrescription(prescription,function (err,prescription) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescription);
+    })
+});
+
+
+app.put('/api/prescriptions/:_id',function (req,res) {
+    var id=req.params._id;
+    var prescription=req.body;
+    Prescription.updatePrescription(id,prescription,{},function (err,prescription) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescription);
+    })
+});
+
+
+app.delete('/api/prescriptions/:_id',function (req,res) {
+    //  var id=req.params._id;
+    Prescription.deletePrescription(req.params._id,function (err,prescription) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescription);
+    })
+});
+
+
+
+
+
+//get prescription by patientID
+ app.get('/api/prescription/:patientHIN',function (req,res) {
+ Prescription.getPrescriptionsByPatientId(req.params.patientHIN,function (err,prescription) {
+ if(err)
+ {
+ throw err;
+ }
+ res.json(prescription);
+ })
+ });
+
+
+
+//get  prescriptionsdetails acording to the user
+app.get('/api/prescriptiondetails/:id',function (req,res) {
+    Prescriptiondetail.getPrescriptionByID(req.params.id,function (err,prescriptiondetails) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescriptiondetails);
+    })
+});
+
+
+//post user
+app.post('/api/users',function (req,res) {
+    var register=req.body;
+    User.addUser(register,function (err,users) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(users);
+    })
+    });
+
+
+
+    app.listen(3000);
 
 console.log('Running on port 3000...');

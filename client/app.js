@@ -48,6 +48,7 @@ myApp.config(function ($routeProvider) {
             controller:'updateDrugsController',
             templateUrl:'views/updateDrugs.html'
         })
+
 	.otherwise({
 		redirectTo:'/'
 	})

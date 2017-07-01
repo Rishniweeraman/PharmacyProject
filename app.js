@@ -288,24 +288,24 @@ transporter.sendMail(HelperOptions,(error,info)=>{
 });
  */
 
-
+//add Drugs codes
 app.get('/api/drug/:category',function (req,res) {
-    Drug.getDrugsByCategory(req.params.category,function (err,supplier) {
+    Drug.getDrugsByCategory(req.params.category,function (err,dd) {
         if(err)
         {
             throw err;
         }
-        res.json(supplier);
+        res.json(dd);
     });
 });
 
 app.get('/api/dr/:name',function (req,res) {
-    Drug.getDrugsByName(req.params.name,function (err,supplier) {
+    Drug.getDrugsByName(req.params.name,function (err,dd) {
         if(err)
         {
             throw err;
         }
-        res.json(supplier);
+        res.json(dd);
     });
 })
 

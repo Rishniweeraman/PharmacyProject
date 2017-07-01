@@ -1,7 +1,7 @@
 var myApp=angular.module('myApp');
 myApp.controller('updateDrugsController',['$scope','$http','$location','$routeParams',function($scope,$http,$location,$routeParams) {
     console.log('updateDrugsController');
-
+//update drug function
     $scope.UpdateDrug=function(id) {
 
         /*var updateObj = {
@@ -19,7 +19,7 @@ myApp.controller('updateDrugsController',['$scope','$http','$location','$routePa
         }
 
     }
-
+//pass values to name textfield
     $scope.test =function (val) {
         console.log(val);
 
@@ -35,7 +35,7 @@ myApp.controller('updateDrugsController',['$scope','$http','$location','$routePa
         }
 
     }
-
+//auto fill text fields
     $scope.autoFill =function (val) {
         console.log(val);
 

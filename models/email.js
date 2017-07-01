@@ -46,6 +46,12 @@ module.exports.getEmailById=function (id,callback) {
 }
 
 //Add Email
+/*
+module.exports.sendMail=function (email,callback) {
+    Email.create(email,callback);
+}
+*/
+//Add Email
 module.exports.sendMail=function (email,callback) {
     Email.create(email,callback);
 }

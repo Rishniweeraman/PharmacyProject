@@ -31,6 +31,7 @@ myApp.controller('DrugsController',['$scope','$http','$location','$routeParams',
         }
 
     }
+    //addDrugs
 
     $scope.addDrug=function() {
 
@@ -76,10 +77,10 @@ myApp.controller('DrugsController',['$scope','$http','$location','$routeParams',
 
     }
 
-    $scope.getDrugNameByCategory=function() {
+    $scope.getDrugsByCategory=function() {
         var category=$routeParams.category;
 
-        $http.get('api/drugs/'+category).then(successCallback,errorCallback);
+        $http.get('api/drug/'+category).then(successCallback,errorCallback);
         function successCallback(response)
         {
             $scope.drug=response.data;

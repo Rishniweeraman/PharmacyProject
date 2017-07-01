@@ -1,0 +1,52 @@
+<div class="panel panel-primary">
+    <div class="panel-heading" >
+        Add drugs Manually
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <div class="col-xs-10">
+                <div class="form-group">
+
+                    <form ng-submit="addNewBatch()">
+
+                        <label for="sel1"><small>Drug Category</small></label>
+                        <select class="form-control input-sm" id="sel1" ng-model="drug.category">
+                            <option>Narcotics</option>
+                            <option>Drugs used in the treatment of injections</option>
+                            <option>Drugs used in the treatment of Cardiovascular system</option>
+                            <option>Drugs acting on the central nervous system</option>
+                        </select>
+
+
+                        <label for="usr1"><small>Drug Name</small></label>
+                        <input type="text" class="form-control" id="usr1" ng-model="drug.name">
+
+                        <div class="form-group">
+                            <label for="sel2"><small>Drug Type</small></label>
+                            <select class="form-control input-sm" id="sel2" ng-model="drug.unitType">
+                                <option>AMP</option>
+                                <option>Tablets</option>
+                                <option>Capsules</option>
+                                <option>spray</option>
+                            </select>
+                        </div>
+
+                        <label for="usr2"><small>Batch Number</small></label>
+                        <input type="text" class="form-control" id="usr2" ng-model="drug.batchNo">
+
+                        <label for="usr3"><small>Quantity</small></label>
+                        <input type="text" class="form-control" id="usr3" ng-model="drug.quantity">
+
+                        <label for="usr6"><small>Manufacture Date</small></label>
+                        <input type="text" class="form-control" id="usr6" ng-model="drug.manufactureDate">
+
+                        <label for="usr7"><small>Expiration Date</small></label>
+                        <input type="text" class="form-control" id="usr7" ng-model="drug.expirationDate">
+
+                        <br>
+                        <button type="button" class="btn btn-primary" ng-click="addNewBatch()">Add New Batch</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -16,14 +16,15 @@ myApp.config(function ($routeProvider) {
 		controller:'PlaceOrdersController',
         templateUrl:'views/placeOrder.html'
 	})
-	/*.when('/emails',{
+
+	.when('/emails',{
          controller:'PlaceOrdersController',
          templateUrl:'views/email.html'
-    })*/
-    .when('/emails',{
+    })
+    /*.when('/email',{
         controller:'EmailsController',
         templateUrl:'views/email.html'
-    })
+    })*/
 	.when('/drugs/edit/:id',{
         controller:'DrugsController',
         templateUrl:'views/drugEdit.html'
@@ -32,10 +33,10 @@ myApp.config(function ($routeProvider) {
         controller:'DrugsController',
         templateUrl:'views/drugView.html'
     })
-    .when('/drugs/:categorys',{
+    .when('/drug/:category',{
             controller:'DrugsController',
             templateUrl:'views/drugName.html'
-        })
+    })
 	.when('/reports',{
         controller:'ReportsController',
         templateUrl:'views/report.html'

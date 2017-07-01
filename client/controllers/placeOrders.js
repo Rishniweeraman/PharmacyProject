@@ -27,20 +27,40 @@ myApp.controller('PlaceOrdersController',['$scope','$http','$location','$routePa
 
     }
 
+    $scope.sendMail=function() {
+
+        var  email={
+            from:$scope.from,
+            to:$scope.to,
+            subject:$scope.subject,
+            text:$scope.text
+        };
+
+        $http.post('api/emails/', email).then(successCallback,errorCallback);
+        function successCallback(response)
+        {
+            window.location.href="#!/drugs";
+        }
+        function errorCallback(error)
+        {
+            console.log('err from sendMails')
+        }
+
+    }
 
 
-
+/*
     $scope.sendMail=function() {
 
         var  HelperOptions={
             from:$scope.from,
             to:$scope.to,
             subject:$scope.subject,
-            text:scope.text
+            text:$scope.text
         };
 
 
-        $http.post('api/emails/', $scope.HelperOptions).then(successCallback,errorCallback);
+        $http.post('api/emails/', HelperOptions).then(successCallback,errorCallback);
         function successCallback(response)
         {
             window.location.href="#/emails";
@@ -66,5 +86,6 @@ myApp.controller('PlaceOrdersController',['$scope','$http','$location','$routePa
         }
 
     }
+    */
 
 }])

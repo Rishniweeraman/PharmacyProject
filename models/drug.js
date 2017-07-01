@@ -74,7 +74,7 @@ module.exports.getDrugById=function (id,callback) {
 }
 
 //get Drug name by category
-module.exports.getDrugNameByCategory=function (category,callback) {
+module.exports.getDrugsByCategory=function (category,callback) {
     var selectedCategory={category: category};
     Drug.find({'category':selectedCategory},callback);
 }

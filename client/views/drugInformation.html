@@ -14,11 +14,11 @@
                         <tr>
                             <td>Drug Category :</td>
                             <td>
-                                <select ng-model="drugcategory" style="width:500px">
+                                <select ng-model="drugcategory" style="width:500px" name="category">
                                     <option value="selectDrugCategory">Select drug category</option>
-                                    <option value="narcotics">Narcotics</option>
-                                    <option value="injection">Drugs used in treatment of injection</option>
-                                    <!--<option ng-repeat="drug in drugs" value={{drug.category}}>{{drug.category}}</option>-->
+                                    <!--<option value="narcotics">Narcotics</option>-->
+                                    <!--<option value="injection">Drugs used in treatment of injection</option>-->
+                                    <option ng-repeat="drug in drugs" value={{drug.category}}>{{drug.category}}</option>
 
                                 </select>
                             </td>
@@ -33,7 +33,7 @@
                                 </select>-->
                                 <select ng-model="drugname"  style="width:500px">
                                     <option value="">Select drug name</option>
-                                    <option ng-repeat="drug in drugs" value={{drug.name}}>{{drug.name}}</option>
+                                    <option ng-repeat="drug in drugs" ng-if="drug.category != category" value={{drug.name}}>{{drug.name}}</option>
                                 </select>
                             </td>
                         </tr>

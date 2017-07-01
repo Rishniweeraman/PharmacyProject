@@ -31,6 +31,7 @@ myApp.controller('DrugsController',['$scope','$http','$location','$routeParams',
         }
 
     }
+    //addDrugs
 
     $scope.addDrug=function() {
 

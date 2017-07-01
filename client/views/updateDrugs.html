@@ -1,0 +1,143 @@
+<div class="panel panel-default" ng-init="getDrugs()">
+    <div class="panel-heading">
+        <ul class="list-inline">
+            <li>Drug Information<button class="btn-primary"><i class="glyphicon glyphicon-minus"></i> </button>
+            <li><button class="btn-primary" ><i class="glyphicon glyphicon-remove-sign"></i> </button></li>
+        </ul>
+    </div>
+    <div class="panel-body" style="overflow-x:auto;overflow-y:auto">
+        <form>
+            <div class="form-group">
+
+                <table class="table table-striped">
+
+                    <tr>
+                        <td>Drug Category :</td>
+                        <td>
+                            <select ng-model="drugcategory" style="width:500px" ng-change="test(drugcategory)" >
+                                <option value="selectDrugCategory">Select drug category</option>
+                                <option value="Narcotics">Narcotics</option>
+                                <option value="Drugs used in the treatment of injection">Drugs used in treatment of injection</option>
+                                <!--<option ng-repeat="drug in drugs" value={{drug.category}}>{{drug.category}}</option>-->
+
+                            </select>
+                        </td>
+                    </tr>
+
+
+                    <tr ng-show="drugcategory">
+                        <td>Drug Name :</td>
+                        <td>
+                            <!--<select ng-model="test" ng-options="drug.name for drug in drugInformation.drugs" style="width:500px">
+                                <option value="">Select drug name</option>
+                            </select>-->
+                            <select ng-model="drugname"  style="width:500px" ng-change="autoFill(drugname)">
+                                <option value="">Select drug name</option>
+                                <option ng-repeat="drug in drugDetails" value={{drug.name}}>{{drug.name}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </form>
+    </div>
+
+    <div class="panel-body" style="overflow-x:auto" ng-show="drugname">
+        <label for="usr6"><small>Drug Type</small></label>
+        <input type="text" class="form-control" id="usr6" ng-model="drugInfo[0].unitType">
+
+        <label for="usr6"><small>Drug Price</small></label>
+        <input type="text" class="form-control" id="usr8" ng-model="drugInfo[0].price">
+
+
+        <label for="usr7"><small>Remarks</small></label>
+        <input type="text" class="form-control" id="usr7" ng-model="drugInfo[0].remarks">
+
+        <button type="button" class="btn btn-primary" ng-click="UpdateDrug(drugInfo[0]._id)">Update Drug</button>
+
+    </div>
+
+</div>
+
+
+<!--
+<div class="panel panel-default" ng-init="getDrugs()">
+        <div class="panel-heading">
+            <ul class="list-inline">
+                <li>Drug Information<button class="btn-primary"><i class="glyphicon glyphicon-minus"></i> </button>
+                <li><button class="btn-primary" ><i class="glyphicon glyphicon-remove-sign"></i> </button></li>
+            </ul>
+        </div>
+        <div class="panel-body" style="overflow-x:auto;overflow-y:auto">
+            <form>
+                <div class="form-group">
+
+                    <table class="table table-striped">
+
+                        <tr>
+                            <td>Drug Category :</td>
+                            <td>
+                                <select ng-model="drugcategory" style="width:500px">
+                                    <option value="selectDrugCategory">Select drug category</option>
+                                    <option value="narcotics">Narcotics</option>
+                                    <option value="injection">Drugs used in treatment of injection</option>
+                                    //<option ng-repeat="drug in drugs" value={{drug.category}}>{{drug.category}}</option>
+
+</select>
+</td>
+</tr>
+
+
+<tr ng-show="drugcategory">
+    <td>Drug Name :</td>
+    <td>
+        //<select ng-model="test" ng-options="drug.name for drug in drugInformation.drugs" style="width:500px">
+            //<option value="">Select drug name</option>
+        //</select>
+        <select ng-model="drugname"  style="width:500px">
+            <option value="">Select drug name</option>
+            <option ng-repeat="drug in drugs" value={{drug.name}}>{{drug.name}}</option>
+        </select>
+    </td>
+</tr>
+</table>
+
+
+</div>
+</form>
+</div>
+
+<div class="panel-body" style="overflow-x:auto" ng-show="drugname">
+    <table class="table table-striped" style="width:100%;white-space:nowrap">
+
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Batch No</th>
+            <th>Edit</th>
+            <th>View</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="drug in drugs">
+            <td style="border: 1px solid #dddddd">{{drug.name}}</td>
+            <td style="border: 1px solid #dddddd">{{drug.batchNo}}</td>
+            <td><a class="btn btn-primary" href="#!/drugs/edit/{{drug._id}}">Edit</a></td>
+            <td><a class="btn btn-primary" href="#!/drugs/view/{{drug._id}}">View</a></td>
+            <td><a class="btn btn-danger" href="#!/" ng-click="deleteDrug(drug._id)">Delete</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+
+
+
+-->

@@ -82,9 +82,9 @@ app.delete('/api/genres/:_id',function (req,res) {
 */
 
 //drug
-
-app.get('/api/drug/:category',function (req,res) {
-    Drug.getDrugsByCategory(req.params.category,function (err,drugs) {
+/**
+app.get('/api/drugs/:category',function (req,res) {
+    Drug.getDrugNameByCategory(req.params.category,function (err,drugs) {
         if(err)
         {
             throw err;
@@ -92,7 +92,7 @@ app.get('/api/drug/:category',function (req,res) {
         res.json(drugs);
     });
 });
-
+*/
 app.get('/api/drugs',function (req,res) {
     Drug.getDrugs(function (err,drugs) {
         if(err)
@@ -112,9 +112,18 @@ app.get('/api/drugs/:_id',function (req,res) {
         res.json(drug);
     });
 });
+/*
+app.get('/api/drugs/:category',function (req,res) {
+    Drug.getDrugsByCategory(req.params.category,function (err,drug) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(drug);
+    });
+});
 
-
-
+*/
 app.post('/api/drugs',function (req,res) {
     var drug=req.body;
     Drug.addDrug(drug,function (err,drug) {
@@ -232,8 +241,8 @@ app.get('/api/emails',function (req,res) {
         res.json(emails);
     });
 });
-/*
 
+/*
 var fs=require('fs');
 //var config=JSON.parse(fs.readFileSync("config.json"));
 
@@ -262,11 +271,11 @@ transporter.sendMail(HelperOptions,(error,info)=>{
     console.log("The message was sent!");
     console.log(info);
 
-
+    /*
     app.post('/api/emails',function (req,res) {
 
         //var email=req.body;
-        transporter.sendMail(HelperOptions,function (err,email) {
+        Email.sendMail(HelperOptions,function (err,email) {
             if(err)
             {
                 throw err;
@@ -277,18 +286,42 @@ transporter.sendMail(HelperOptions,(error,info)=>{
 
 
 });
-     */
+ */
 
-app.post('/api/emails',function (req,res) {
-    var email=req.body;
-    Email.sendMail(email,function (err,email) {
+//add Drugs codes
+app.get('/api/drug/:category',function (req,res) {
+    Drug.getDrugsByCategory(req.params.category,function (err,dd) {
         if(err)
         {
             throw err;
         }
-        res.json(email);
+        res.json(dd);
     });
 });
+
+app.get('/api/dr/:name',function (req,res) {
+    Drug.getDrugsByName(req.params.name,function (err,dd) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(dd);
+    });
+})
+
+
+app.post('/api/addDrugs',function (req,res) {
+
+    var drug=req.body;
+    Drug.addDrug(drug,function (err,drug) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(drug);
+    });
+});
+
 
 app.listen(3000);
 

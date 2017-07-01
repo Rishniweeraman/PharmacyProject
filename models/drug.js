@@ -74,12 +74,15 @@ module.exports.getDrugById=function (id,callback) {
 }
 
 //get Drug name by category
-module.exports.getDrugNameByCategory=function (category,callback) {
-    var selectedCategory={category: category};
-    Drug.find({'category':selectedCategory},callback);
+module.exports.getDrugsByCategory=function (category,callback) {
+
+    Drug.find({'category':category},callback);
 }
 
+module.exports.getDrugsByName=function (name,callback) {
 
+    Drug.find({'name':name},callback);
+}
 //Add Drug
 module.exports.addDrug=function (drug,callback) {
     Drug.create(drug,callback);

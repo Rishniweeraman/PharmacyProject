@@ -288,6 +288,28 @@ transporter.sendMail(HelperOptions,(error,info)=>{
 });
  */
 
+
+app.get('/api/drug/:category',function (req,res) {
+    Drug.getDrugsByCategory(req.params.category,function (err,supplier) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(supplier);
+    });
+});
+
+app.get('/api/dr/:name',function (req,res) {
+    Drug.getDrugsByName(req.params.name,function (err,supplier) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(supplier);
+    });
+})
+
+
 app.post('/api/addDrugs',function (req,res) {
 
     var drug=req.body;

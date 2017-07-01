@@ -1,6 +1,9 @@
+/**
+ * Created by Admin on 7/1/2017.
+ */
 var myApp=angular.module('myApp');
-myApp.controller('DrugsController',['$scope','$http','$location','$routeParams',function($scope,$http,$location,$routeParams) {
-    console.log('DrugsController');
+myApp.controller('DrugstocksController',['$scope','$http','$location','$routeParams',function($scope,$http,$location,$routeParams) {
+    console.log('DrugstocksController');
 
     $scope.getDrugs=function() {
 
@@ -31,7 +34,6 @@ myApp.controller('DrugsController',['$scope','$http','$location','$routeParams',
         }
 
     }
-    //addDrugs
 
     $scope.addDrug=function() {
 
@@ -77,34 +79,18 @@ myApp.controller('DrugsController',['$scope','$http','$location','$routeParams',
 
     }
 
-    $scope.getDrugsByCategory=function(category) {
-        //var category=$routeParams.category;
+    $scope.getDrugNameByCategory=function() {
+        var category=$routeParams.category;
 
-        $http.get('api/drug/'+category).then(successCallback,errorCallback);
+        $http.get('api/drugs/'+category).then(successCallback,errorCallback);
         function successCallback(response)
         {
-            $scope.drugDetails=response.data;
+            $scope.drug=response.data;
             console.log(response.data);
         }
         function errorCallback(error)
         {
             console.log('err from getDrugNameByCategory')
-        }
-
-    }
-
-    $scope.getDrugsByName=function(name) {
-        console.log(name);
-
-        $http.get('api/d/'+name).then(successCallback,errorCallback);
-        function successCallback(response)
-        {
-            $scope.drugDetailss=response.data;
-            console.log(response.data);
-        }
-        function errorCallback(error)
-        {
-            console.log('err from getDrugsByName')
         }
 
     }

@@ -1,4 +1,4 @@
-﻿var express=require('express');
+var express=require('express');
 var bodyparser=require('body-parser');
 var mongoose=require('mongoose');
 
@@ -7,6 +7,8 @@ var app=express();
 
 //connecting client
 app.use(express.static(__dirname+'/client'));
+
+
 
 /*
 app.use(function (req,res,next) {
@@ -22,7 +24,9 @@ app.use(bodyparser.json());
 Drug=require('./models/drug');
 Supplier=require('./models/supplier');
 Email=require('./models/email');
-
+Prescription=require('./models/prescription');
+User=require('./models/user');
+Prescriptiondetail=require('./models/prescriptiondetail');
 //connect to mongoose
 mongoose.connect('mongodb://code_girls:code_girls123@ds141242.mlab.com:41242/pharmacy');
 
@@ -30,6 +34,18 @@ var db=mongoose.connection;
 
 app.get('/',function (req,res) {
     res.send('please use /api/drugs or /api/genres');
+});
+
+//drug
+//get drug by category
+app.get('/api/drug/:category',function (req,res) {
+    Drug.getDrugsByCategory(req.params.category,function (err,drugs) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(drugs);
+    });
 });
 
 //drug
@@ -252,6 +268,142 @@ app.post('/api/emails',function (req,res) {
     });
 });
 
-app.listen(3000);
+//add Drugs codes
+app.get('/api/drug/:category',function (req,res) {
+    Drug.getDrugsByCategory(req.params.category,function (err,dd) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(dd);
+    });
+});
+
+app.get('/api/dr/:name',function (req,res) {
+    Drug.getDrugsByName(req.params.name,function (err,dd) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(dd);
+    });
+})
+
+
+app.post('/api/addDrugs',function (req,res) {
+
+    var drug=req.body;
+    Drug.addDrug(drug,function (err,drug) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(drug);
+    });
+});
+
+//get all prescriptions
+app.get('/api/prescriptions',function (req,res) {
+    Prescription.getPrescriptions(function (err,prescriptions) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescriptions);
+    })
+});
+
+//get a prescription
+app.get('/api/prescriptions/:_id',function (req,res) {
+    Prescription.getPrescriptionsById(req.params._id,function (err,prescription) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescription);
+    })
+});
+
+
+app.post('/api/prescriptions',function (req,res) {
+    var prescription=req.body;
+    Prescription.addPrescription(prescription,function (err,prescription) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescription);
+    })
+});
+
+
+app.put('/api/prescriptions/:_id',function (req,res) {
+    var id=req.params._id;
+    var prescription=req.body;
+    Prescription.updatePrescription(id,prescription,{},function (err,prescription) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescription);
+    })
+});
+
+
+app.delete('/api/prescriptions/:_id',function (req,res) {
+    //  var id=req.params._id;
+    Prescription.deletePrescription(req.params._id,function (err,prescription) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescription);
+    })
+});
+
+
+
+
+
+//get prescription by patientID
+ app.get('/api/prescription/:patientHIN',function (req,res) {
+ Prescription.getPrescriptionsByPatientId(req.params.patientHIN,function (err,prescription) {
+ if(err)
+ {
+ throw err;
+ }
+ res.json(prescription);
+ })
+ });
+
+
+
+//get  prescriptionsdetails acording to the user
+app.get('/api/prescriptiondetails/:id',function (req,res) {
+    Prescriptiondetail.getPrescriptionByID(req.params.id,function (err,prescriptiondetails) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(prescriptiondetails);
+    })
+});
+
+
+//post user
+app.post('/api/users',function (req,res) {
+    var register=req.body;
+    User.addUser(register,function (err,users) {
+        if(err)
+        {
+            throw err;
+        }
+        res.json(users);
+    })
+    });
+
+
+
+    app.listen(3000);
 
 console.log('Running on port 3000...');
